@@ -2,6 +2,7 @@
 import type { RouteRecordRaw } from "vue-router"
 import { isExternal } from "@@/utils/validate"
 import path from "path-browserify"
+import { useI18n } from "vue-i18n"
 import Link from "./Link.vue"
 
 interface Props {
@@ -10,6 +11,33 @@ interface Props {
 }
 
 const { item, basePath = "" } = defineProps<Props>()
+
+const { t } = useI18n()
+
+/** 标题国际化映射 */
+const titleMap: Record<string, string> = {
+  "首页": "sidebar.dashboard",
+  "示例集合": "sidebar.demo",
+  "Element Plus": "sidebar.elementPlus",
+  "Vxe Table": "sidebar.vxeTable",
+  "二级路由": "sidebar.secondLevel",
+  "三级路由": "sidebar.thirdLevel",
+  "组合式函数": "sidebar.composableDemo",
+  "权限演示": "sidebar.permission",
+  "页面级": "sidebar.pagePermission",
+  "按钮级": "sidebar.buttonPermission",
+  "文档链接": "sidebar.demo",
+  "中文文档": "sidebar.demo",
+  "新手教程": "sidebar.demo",
+  "UnoCSS": "sidebar.unocssDemo",
+  "多级菜单": "sidebar.multiLevel"
+}
+
+/** 获取国际化标题 */
+function getI18nTitle(title: string) {
+  const key = titleMap[title]
+  return key ? t(key) : title
+}
 
 /** 是否始终显示根菜单 */
 const alwaysShowRootMenu = computed(() => item.meta?.alwaysShow)
@@ -53,7 +81,7 @@ function resolvePath(routePath: string) {
         <SvgIcon v-if="theOnlyOneChild.meta.svgIcon" :name="theOnlyOneChild.meta.svgIcon" class="svg-icon" />
         <component v-else-if="theOnlyOneChild.meta.elIcon" :is="theOnlyOneChild.meta.elIcon" class="el-icon" />
         <template v-if="theOnlyOneChild.meta.title" #title>
-          <span class="title">{{ theOnlyOneChild.meta.title }}</span>
+          <span class="title">{{ getI18nTitle(theOnlyOneChild.meta.title) }}</span>
         </template>
       </el-menu-item>
     </Link>
@@ -62,7 +90,7 @@ function resolvePath(routePath: string) {
     <template #title>
       <SvgIcon v-if="item.meta?.svgIcon" :name="item.meta.svgIcon" class="svg-icon" />
       <component v-else-if="item.meta?.elIcon" :is="item.meta.elIcon" class="el-icon" />
-      <span v-if="item.meta?.title" class="title">{{ item.meta.title }}</span>
+      <span v-if="item.meta?.title" class="title">{{ getI18nTitle(item.meta.title) }}</span>
     </template>
     <template v-if="item.children">
       <Item

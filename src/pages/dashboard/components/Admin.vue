@@ -1,11 +1,14 @@
 <script lang="ts" setup>
+import { useI18n } from "vue-i18n"
 import SvgDashboard from "../images/dashboard.svg?component" // vite-svg-loader 插件的功能
+
+const { t } = useI18n()
 </script>
 
 <template>
   <div class="app-container center">
     <SvgDashboard class="svg" />
-    <p>欢迎来到「Admin」角色专属首页</p>
+    <p>{{ t('dashboard.welcome') }}</p>
   </div>
 </template>
 

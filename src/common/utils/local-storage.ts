@@ -79,3 +79,17 @@ export function setCachedViews(views: string[]) {
   localStorage.setItem(CacheKey.CACHED_VIEWS, JSON.stringify(views))
 }
 // #endregion
+
+// #region 语言设置
+export function getLocale() {
+  return localStorage.getItem(CacheKey.LOCALE)
+}
+
+export function setLocale(locale: string) {
+  localStorage.setItem(CacheKey.LOCALE, locale)
+}
+
+export function removeLocale() {
+  localStorage.removeItem(CacheKey.LOCALE)
+}
+// #endregion

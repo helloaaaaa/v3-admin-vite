@@ -1,0 +1,88 @@
+{
+  "common": {
+    "confirm": "确认",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "add": "添加",
+    "search": "搜索",
+    "reset": "重置",
+    "operation": "操作",
+    "success": "操作成功",
+    "failed": "操作失败",
+    "loading": "加载中...",
+    "noData": "暂无数据",
+    "welcome": "欢迎使用"
+  },
+  "login": {
+    "title": "系统登录",
+    "username": "用户名",
+    "password": "密码",
+    "remember": "记住我",
+    "forgot": "忘记密码",
+    "submit": "登 录",
+    "otherLogin": "其他登录方式",
+    "usernamePlaceholder": "请输入用户名",
+    "passwordPlaceholder": "请输入密码",
+    "usernameRequired": "请输入用户名",
+    "passwordRequired": "请输入密码"
+  },
+  "header": {
+    "fullscreen": "全屏",
+    "notification": "通知",
+    "language": "语言",
+    "theme": "主题",
+    "settings": "设置",
+    "profile": "个人中心",
+    "logout": "退出登录"
+  },
+  "sidebar": {
+    "dashboard": "首页",
+    "demo": "示例页面",
+    "elementPlus": "Element Plus",
+    "vxeTable": "VXE Table",
+    "permission": "权限管理",
+    "pagePermission": "页面权限",
+    "buttonPermission": "按钮权限",
+    "composableDemo": "组合式函数",
+    "unocssDemo": "Unocss 示例",
+    "multiLevel": "多级菜单",
+    "secondLevel": "二级菜单",
+    "thirdLevel": "三级菜单"
+  },
+  "settings": {
+    "title": "布局设置",
+    "layoutMode": "布局模式",
+    "sideMode": "侧边菜单模式",
+    "topMode": "顶部菜单模式",
+    "leftTopMode": "左侧顶部菜单模式",
+    "theme": "主题设置",
+    "primaryColor": "主题色",
+    "darkMode": "暗黑模式",
+    "interfaceSettings": "界面设置",
+    "showLogo": "显示 Logo",
+    "showTabs": "显示标签栏",
+    "showFooter": "显示页脚",
+    "grayMode": "灰色模式",
+    "colorWeakness": "色弱模式"
+  },
+  "dashboard": {
+    "title": "仪表盘",
+    "welcome": "欢迎使用 v3-admin-vite 管理系统",
+    "description": "一个开箱即用的中后台管理系统模板",
+    "announcement": "公告",
+    "trend": "趋势",
+    "tasks": "任务",
+    "activities": "最近活动"
+  },
+  "theme": {
+    "light": "浅色",
+    "dark": "深色",
+    "darkBlue": "深蓝"
+  },
+  "language": {
+    "zhCN": "简体中文",
+    "enUS": "English"
+  }
+}

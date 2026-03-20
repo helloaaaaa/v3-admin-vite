@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import type { FormRules } from "element-plus"
 import type { LoginRequestData } from "./apis/type"
+import LangSwitch from "@@/components/LangSwitch/index.vue"
 import ThemeSwitch from "@@/components/ThemeSwitch/index.vue"
 import { Key, Loading, Lock, Picture, User } from "@element-plus/icons-vue"
+import { useI18n } from "vue-i18n"
 import { useSettingsStore } from "@/pinia/stores/settings"
 import { useUserStore } from "@/pinia/stores/user"
 import { getCaptchaApi, loginApi } from "./apis"
@@ -18,6 +20,8 @@ const userStore = useUserStore()
 const settingsStore = useSettingsStore()
 
 const { isFocus, handleBlur, handleFocus } = useFocus()
+
+const { t } = useI18n()
 
 /** 登录表单元素的引用 */
 const loginFormRef = useTemplateRef("loginFormRef")
@@ -38,10 +42,10 @@ const loginFormData: LoginRequestData = reactive({
 /** 登录表单校验规则 */
 const loginFormRules: FormRules = {
   username: [
-    { required: true, message: "请输入用户名", trigger: "blur" }
+    { required: true, message: () => t("login.usernameRequired"), trigger: "blur" }
   ],
   password: [
-    { required: true, message: "请输入密码", trigger: "blur" },
+    { required: true, message: () => t("login.passwordRequired"), trigger: "blur" },
     { min: 8, max: 16, message: "长度在 8 到 16 个字符", trigger: "blur" }
   ],
   code: [
@@ -88,6 +92,7 @@ createCode()
 <template>
   <div class="login-container">
     <ThemeSwitch v-if="settingsStore.showThemeSwitch" class="theme-switch" />
+    <LangSwitch class="lang-switch" />
     <Owl :close-eyes="isFocus" />
     <div class="login-card">
       <div class="title">
@@ -98,7 +103,7 @@ createCode()
           <el-form-item prop="username">
             <el-input
               v-model.trim="loginFormData.username"
-              placeholder="用户名"
+              :placeholder="t('login.usernamePlaceholder')"
               type="text"
               tabindex="1"
               :prefix-icon="User"
@@ -108,7 +113,7 @@ createCode()
           <el-form-item prop="password">
             <el-input
               v-model.trim="loginFormData.password"
-              placeholder="密码"
+              :placeholder="t('login.passwordPlaceholder')"
               type="password"
               tabindex="2"
               :prefix-icon="Lock"
@@ -147,7 +152,7 @@ createCode()
             </el-input>
           </el-form-item>
           <el-button :loading="loading" type="primary" size="large" @click.prevent="handleLogin">
-            登 录
+            {{ t('login.submit') }}
           </el-button>
         </el-form>
       </div>
@@ -167,6 +172,12 @@ createCode()
     position: fixed;
     top: 5%;
     right: 5%;
+    cursor: pointer;
+  }
+  .lang-switch {
+    position: fixed;
+    top: 5%;
+    right: 12%;
     cursor: pointer;
   }
   .login-card {

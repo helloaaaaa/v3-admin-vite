@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import LangSwitch from "@@/components/LangSwitch/index.vue"
 import Notify from "@@/components/Notify/index.vue"
 import Screenfull from "@@/components/Screenfull/index.vue"
 import SearchMenu from "@@/components/SearchMenu/index.vue"
@@ -6,6 +7,7 @@ import ThemeSwitch from "@@/components/ThemeSwitch/index.vue"
 import { useDevice } from "@@/composables/useDevice"
 import { useLayoutMode } from "@@/composables/useLayoutMode"
 import { UserFilled } from "@element-plus/icons-vue"
+import { useI18n } from "vue-i18n"
 import { useAppStore } from "@/pinia/stores/app"
 import { useSettingsStore } from "@/pinia/stores/settings"
 import { useUserStore } from "@/pinia/stores/user"
@@ -22,6 +24,8 @@ const appStore = useAppStore()
 const userStore = useUserStore()
 
 const settingsStore = useSettingsStore()
+
+const { t } = useI18n()
 
 const { showNotify, showThemeSwitch, showScreenfull, showSearchMenu } = storeToRefs(settingsStore)
 
@@ -51,6 +55,7 @@ function logout() {
       <SearchMenu v-if="showSearchMenu" class="right-menu-item" />
       <Screenfull v-if="showScreenfull" class="right-menu-item" />
       <ThemeSwitch v-if="showThemeSwitch" class="right-menu-item" />
+      <LangSwitch class="right-menu-item" />
       <Notify v-if="showNotify" class="right-menu-item" />
       <el-dropdown>
         <div class="right-menu-item user">
@@ -66,7 +71,7 @@ function logout() {
               <el-dropdown-item>Gitee</el-dropdown-item>
             </a>
             <el-dropdown-item divided @click="logout">
-              退出登录
+              {{ t('header.logout') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
