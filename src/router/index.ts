@@ -100,6 +100,15 @@ export const constantRoutes: RouteRecordRaw[] = [
         }
       },
       {
+        path: "wang-editor",
+        component: () => import("@/pages/demo/wang-editor/index.vue"),
+        name: "WangEditorDemo",
+        meta: {
+          title: "WangEditor 编辑器",
+          keepAlive: true
+        }
+      },
+      {
         path: "level2",
         component: () => import("@/pages/demo/level2/index.vue"),
         redirect: "/demo/level2/level3",
